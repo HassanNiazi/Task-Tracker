@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToDoApp</string>
+    <string name="app_name">Note Down</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -20,7 +20,7 @@
     <string name="loading">Loading…</string>
     <string name="auth_code_fmt">Auth Code: %s</string>
     <string name="id_token_fmt">ID Token: %s</string>
-
+<string name="app_id_google">149807316740-pq5t6vauvmmbcqa9kdvhtslan0222aqt.apps.googleusercontent.com</string>
     <!-- Google Play Services error for Toast -->
     <string name="play_services_error_fmt">Google Play Services Error: %i</string>
 
@@ -47,42 +47,7 @@
     <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
          from https://console.developers.google.com/ -->
     <string name="server_client_id">1:149807316740:android:05e98ab385fca9cd</string>
-    <string-array name="titles">
-        <item>Task 1</item>
-        <item>Task 2</item>
-        <item>Task 3</item>
-        <item>Task 4</item>
-        <item>Task 5</item>
-        <item>Task 6</item>
-        <item>Task 7</item>
-        <item>Task 8</item>
-        <item>Task 9</item>
-        <item>Task 10</item>
-        <item>Task 11</item>
-        <item>Task 12</item>
-        <item>Task 13</item>
-        <item>Task 14</item>
-        <item>Task 15</item>
-    </string-array>
-
-    <string-array name="descriptions">
-        <item>Task 1 Descriptions</item>
-        <item>Task 2 Descriptions</item>
-        <item>Task 3 Descriptions</item>
-        <item>Task 4 Descriptions</item>
-        <item>Task 5 Descriptions</item>
-        <item>Task 6 Descriptions</item>
-        <item>Task 7 Descriptions</item>
-        <item>Task 8 Descriptions</item>
-        <item>Task 9 Descriptions</item>
-        <item>Task 10 Descriptions</item>
-        <item>Task 11 Descriptions</item>
-        <item>Task 12 Descriptions</item>
-        <item>Task 13 Descriptions</item>
-        <item>Task 14 Descriptions</item>
-        <item>Task 15 Descriptions</item>
-    </string-array>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

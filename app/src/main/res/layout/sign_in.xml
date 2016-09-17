@@ -3,10 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#CDDC39"
 
     tools:context="com.example.hash.todoapp.LoginActivity">
@@ -14,23 +10,24 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="Note Down"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="55dp"
-        android:id="@+id/appTitleLoginPage"
+        android:id="@+id/appTitleLoginPage_SignIn"
         android:fontFamily="cursive"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:layout_centerVertical="true"
-        android:layout_marginTop="400dp"
+
         />
 
 
     <com.google.android.gms.common.SignInButton
 
-        android:id="@+id/signInButton"
-        android:layout_marginTop="400dp"
-android:layout_centerHorizontal="true"
+        android:id="@+id/signInButton_SignIn"
+        android:layout_marginTop="300dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginBottom="50dp"
@@ -41,9 +38,9 @@ android:layout_centerHorizontal="true"
 
 
     <Button
-        android:id="@+id/sign_out_button"
+        android:id="@+id/sign_out_button_SignIn"
         android:layout_width="wrap_content"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="360dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/sign_out"
@@ -58,11 +55,13 @@ android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18dp"
-        android:layout_below="@id/appTitleLoginPage"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/userNameTV"
+        android:id="@+id/userNameTV_SignIn"
 
-        android:text=""/>
+        android:text="..."
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="41dp" />
 
 
 
@@ -76,7 +75,6 @@ android:layout_centerHorizontal="true"
         android:textSize="8dp"
         android:layout_below="@id/appTitleLoginPage"
         android:layout_centerHorizontal="true"
-        android:id="@+id/poweredByTV"
         android:layout_marginTop="130dp"
 
         android:text="    Powered By: "/>
@@ -87,13 +85,12 @@ android:layout_centerHorizontal="true"
 
     <ImageView
 
-android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="110dp"
 
         android:layout_width="80dp"
         android:layout_below="@+id/appTitleLoginPage"
         android:layout_height="80dp"
-        android:id="@+id/firebaseImageView"
         android:src="@mipmap/image00"
 
         />
