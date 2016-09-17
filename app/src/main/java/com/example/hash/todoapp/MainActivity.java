@@ -34,6 +34,8 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,10 +56,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView recyclerView;
 ListView listView;
 
-    String userName = "Anonymous";
-    String userId = "unknown@unknown.com";
-    String imageUrl = "@android:drawable/star_big_on";
-
+//    String userName = "Anonymous";
+//    String userId = "unknown@unknown.com";
+//    String imageUrl = "@android:drawable/star_big_on";
+//    String uid = "nothing";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,19 +67,24 @@ ListView listView;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DatabaseReference firebase = FirebaseDatabase.getInstance().getReference();
-        Intent intent = getIntent();
-        userName = intent.getStringExtra("userName");
-        userId = intent.getStringExtra("userId");
-        imageUrl = intent.getStringExtra("imageUrl");
-
         Firebase.setAndroidContext(this);
+
+
+        FirebaseAuth mAuth;
+
+        mAuth = FirebaseAuth.getInstance();
+
+        final FirebaseUser firebaseUser = mAuth.getCurrentUser();
+
+//        uid = intent.getStringExtra("Uid");
+//        userName = intent.getStringExtra("userName");
+//        userId = intent.getStringExtra("userId");
+//        imageUrl = intent.getStringExtra("imageUrl");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 NewTaskDialog newTaskDialog =new NewTaskDialog();
                 newTaskDialog.show(getFragmentManager(),"NewTask");
             }
@@ -93,18 +100,17 @@ ListView listView;
         navigationView.setNavigationItemSelectedListener(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.taskList);
-//        listView = (ListView) findViewById(R.id.taskList);
 
         View header = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null);
         navigationView.addHeaderView(header);
 
         TextView userNameNavHeaderTV = (TextView) header.findViewById(R.id.userNameNavHeader);
-        userNameNavHeaderTV.setText(userName);
+        userNameNavHeaderTV.setText(firebaseUser.getDisplayName());
 
         TextView userIdNavHeaderTV = (TextView) header.findViewById(R.id.userEmailNavHeader);
-        userIdNavHeaderTV.setText(userId);
+        userIdNavHeaderTV.setText(firebaseUser.getEmail());
 
-        Drawable drawable = LoadImageFromWebOperations(imageUrl);
+        Drawable drawable = LoadImageFromWebOperations(firebaseUser.getPhotoUrl().toString());
 
         ImageView userImageNavHeader = (ImageView) header.findViewById(R.id.userImageNavHeader);
         userImageNavHeader.setImageDrawable(drawable);
@@ -114,8 +120,13 @@ ListView listView;
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+        final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+
+        final DatabaseReference userRef = rootRef.child("users/" + firebaseUser.getUid());
+
         FirebaseRecyclerAdapter<UnitTask,TaskViewHolder> adapter =
-                new FirebaseRecyclerAdapter<UnitTask, TaskViewHolder>(UnitTask.class,R.layout.task,TaskViewHolder.class,firebase) {
+                new FirebaseRecyclerAdapter<UnitTask, TaskViewHolder>(UnitTask.class,R.layout.task,TaskViewHolder.class,userRef) {
                     @Override
                     protected void populateViewHolder(TaskViewHolder viewHolder, UnitTask model, int position) {
                         viewHolder.title.setText(model.getTitle());
@@ -124,64 +135,8 @@ ListView listView;
                     }
                 };
 
-//        final List<UnitTask> unitTasks = new LinkedList<>();
-//
-//        final ArrayAdapter<UnitTask> adapter = new ArrayAdapter<UnitTask>(this,R.layout.task,unitTasks){
-//            @Override
-//            public View getView(int position, View view, ViewGroup parent) {
-//
-//                if (view==null)
-//                {
-//                    view = getLayoutInflater().inflate(R.layout.task,parent);
-//                }
-//
-//                UnitTask unitTask = unitTasks.get(position);
-//
-//                ((TextView)view.findViewById(R.id.Description)).setText(unitTask.getDescription());
-//                ((TextView)view.findViewById(R.id.title)).setText(unitTask.getTitle());
-//                ((CheckBox)view.findViewById(R.id.checkboxTaskRow)).setChecked(unitTask.isCompleted());
-//
-//                return view;
-//            }
-//        };
-//
-//
-//
-//
         recyclerView.setAdapter(adapter);
-////        listView.setAdapter(adapter);
-//
-//        firebase.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//
-//                UnitTask unitTask = dataSnapshot.getValue(UnitTask.class);
-//                unitTasks.add(unitTask);
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
 
-        firebase.keepSynced(true);
     }
     public static Drawable LoadImageFromWebOperations(String url) {
         try {

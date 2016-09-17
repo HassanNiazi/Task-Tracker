@@ -207,7 +207,7 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
         switch(v.getId())
         {
             case R.id.signInButton:
-                signIn();
+                    signIn();
                 break;
 
             case R.id.sign_out_button:

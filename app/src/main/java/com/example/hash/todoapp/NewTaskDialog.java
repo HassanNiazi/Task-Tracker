@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.firebase.client.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.api.model.StringList;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,7 +25,6 @@ public class NewTaskDialog extends DialogFragment {
     public String taskDescription;
     EditText titleTB,descrTB;
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference mUserRef = mDatabase.child("user");
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -32,9 +34,16 @@ public class NewTaskDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.new_task_dialog,null);
         titleTB = (EditText) view.findViewById(R.id.TitleEditText);
         descrTB = (EditText) view.findViewById(R.id.DescEditText);
-     //   final Firebase firebase =new Firebase("https://todo-2b5b4.firebaseio.com/");
 
-        final DatabaseReference firebase = FirebaseDatabase.getInstance().getReference();
+        FirebaseAuth mAuth;
+
+        mAuth = FirebaseAuth.getInstance();
+
+        final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+
+        final FirebaseUser firebaseUser = mAuth.getCurrentUser();
+
+        final DatabaseReference userRef = rootRef.child("users/" + firebaseUser.getUid());
 
         builder.setView(view);
 
@@ -52,7 +61,7 @@ public class NewTaskDialog extends DialogFragment {
 //                Not using becasue we are not sending data back to main activity we will update firebase Db from here
 //                intercom.respond(titleTB.getText().toString(),descrTB.getText().toString(),false);
                 UnitTask unitTask = new UnitTask(titleTB.getText().toString(),descrTB.getText().toString(),false);
-                firebase.push().setValue(unitTask);
+                userRef.push().setValue(unitTask);
 
             }
         });

@@ -18,6 +18,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -34,7 +36,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "SignInActivity";
     private GoogleApiClient mGoogleApiClient;
-    TextView userName;
+//    TextView userName;
     Button signOutButton;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener; // Listens for user signin States changes
@@ -44,7 +46,8 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userName = (TextView) findViewById(R.id.userNameTV_SignIn);
+        setContentView(R.layout.sign_in);
+//        userName = (TextView) findViewById(R.id.userNameTV_SignIn);
         signOutButton = (Button) findViewById(R.id.sign_out_button_SignIn);
 
 
@@ -53,7 +56,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.app_id_google)) // Web Client ID - it can be obtained from either the google dev site or the firebase app
-                .requestEmail()
+                .requestProfile()
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -69,6 +72,10 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+//                    userName.setText(user.getDisplayName());
+                    Toast.makeText(SignIn.this, "Welcome " + user.getDisplayName() , Toast.LENGTH_SHORT).show();
+                    Intent myIntent = new Intent(SignIn.this, MainActivity.class);
+                    SignIn.this.startActivity(myIntent);
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -78,8 +85,12 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         };
 
         SignInButton signInButton = (SignInButton) findViewById(R.id.signInButton_SignIn);
-        signInButton.setSize(SignInButton.SIZE_WIDE);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setScopes(googleSignInOptions.getScopeArray());
+
+        signInButton.setOnClickListener(this);
+        signOutButton.setOnClickListener(this);
+
 
     }
 
@@ -115,7 +126,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 GoogleSignInAccount account = result.getSignInAccount();
                     firebaseAuthWithGoogle(account);
             } else {
-                Toast.makeText(SignIn.this, "Sign In Failed with request code :  " + requestCode, Toast.LENGTH_LONG).show();
+                Toast.makeText(SignIn.this, "Sign In Failed with request code :  " + resultCode, Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -129,7 +140,6 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
@@ -148,13 +158,37 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
     }
 
+    public void signOut()
+    {
+
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                        // [START_EXCLUDE]
+                        //     updateUI(false);
+                        // [END_EXCLUDE]
+                    }
+                });
+
+    }
+
     @Override
     public void onClick(View v) {
 
         switch (v.getId())
         {
+            case R.id.signInButton_SignIn:
+                signIn();
+                break;
+
+            case  R.id.signInButton:
+                signIn();
+                break;
+
             case R.id.sign_out_button_SignIn:
-                FirebaseAuth.getInstance().signOut();
+//                FirebaseAuth.getInstance().signOut();
+                signOut();
                 break;
         }
 
