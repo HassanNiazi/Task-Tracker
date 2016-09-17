@@ -54,12 +54,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     RecyclerView recyclerView;
-ListView listView;
+    ListView listView;
+    FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
 
-//    String userName = "Anonymous";
-//    String userId = "unknown@unknown.com";
-//    String imageUrl = "@android:drawable/star_big_on";
-//    String uid = "nothing";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,21 +68,16 @@ ListView listView;
         Firebase.setAndroidContext(this);
 
 
-        FirebaseAuth mAuth;
-
-        mAuth = FirebaseAuth.getInstance();
-
-        final FirebaseUser firebaseUser = mAuth.getCurrentUser();
-
-//        uid = intent.getStringExtra("Uid");
-//        userName = intent.getStringExtra("userName");
-//        userId = intent.getStringExtra("userId");
-//        imageUrl = intent.getStringExtra("imageUrl");
+    mAuth = FirebaseAuth.getInstance();
+    firebaseUser = mAuth.getCurrentUser();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mAuth = FirebaseAuth.getInstance();
+                firebaseUser = mAuth.getCurrentUser();
                 NewTaskDialog newTaskDialog =new NewTaskDialog();
                 newTaskDialog.show(getFragmentManager(),"NewTask");
             }
@@ -101,21 +94,30 @@ ListView listView;
 
         recyclerView = (RecyclerView) findViewById(R.id.taskList);
 
-        View header = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null);
-        navigationView.addHeaderView(header);
-
-        TextView userNameNavHeaderTV = (TextView) header.findViewById(R.id.userNameNavHeader);
-        userNameNavHeaderTV.setText(firebaseUser.getDisplayName());
-
-        TextView userIdNavHeaderTV = (TextView) header.findViewById(R.id.userEmailNavHeader);
-        userIdNavHeaderTV.setText(firebaseUser.getEmail());
-
-        Drawable drawable = LoadImageFromWebOperations(firebaseUser.getPhotoUrl().toString());
-
-        ImageView userImageNavHeader = (ImageView) header.findViewById(R.id.userImageNavHeader);
-        userImageNavHeader.setImageDrawable(drawable);
+        try {
 
 
+
+            View header = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null);
+            navigationView.addHeaderView(header);
+
+            TextView userNameNavHeaderTV = (TextView) header.findViewById(R.id.userNameNavHeader);
+            userNameNavHeaderTV.setText(firebaseUser.getDisplayName());
+
+            TextView userIdNavHeaderTV = (TextView) header.findViewById(R.id.userEmailNavHeader);
+            userIdNavHeaderTV.setText(firebaseUser.getEmail());
+
+            //        Drawable drawable = LoadImageFromWebOperations(firebaseUser.getPhotoUrl().toString());
+
+//        ImageView userImageNavHeader = (ImageView) header.findViewById(R.id.userImageNavHeader);
+//        userImageNavHeader.setImageDrawable(drawable);
+        }
+        catch (Exception e)
+        {
+
+            Toast.makeText(MainActivity.this, "Unable to load user data", Toast.LENGTH_SHORT).show();
+
+        }
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -123,19 +125,34 @@ ListView listView;
 
         final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
+
+
         final DatabaseReference userRef = rootRef.child("users/" + firebaseUser.getUid());
 
         FirebaseRecyclerAdapter<UnitTask,TaskViewHolder> adapter =
                 new FirebaseRecyclerAdapter<UnitTask, TaskViewHolder>(UnitTask.class,R.layout.task,TaskViewHolder.class,userRef) {
                     @Override
                     protected void populateViewHolder(TaskViewHolder viewHolder, UnitTask model, int position) {
+                        mAuth = FirebaseAuth.getInstance();
+                        firebaseUser = mAuth.getCurrentUser();
                         viewHolder.title.setText(model.getTitle());
                         viewHolder.description.setText(model.getDescription());
                         viewHolder.checkBox.setChecked(model.isCompleted());
                     }
                 };
 
+
+
+
+
+
+
+
+
+
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        recyclerView.refreshDrawableState();
 
     }
     public static Drawable LoadImageFromWebOperations(String url) {
@@ -186,7 +203,9 @@ ListView listView;
         int id = item.getItemId();
 
         if (id == R.id.nav_sign_out) {
-            finish();
+            mAuth.signOut();
+            Intent myIntent = new Intent(MainActivity.this, SignIn.class);
+            MainActivity.this.startActivity(myIntent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

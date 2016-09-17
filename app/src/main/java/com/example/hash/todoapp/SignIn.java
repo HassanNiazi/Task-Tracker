@@ -39,58 +39,71 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 //    TextView userName;
     Button signOutButton;
     private FirebaseAuth mAuth;
+    private FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener mAuthListener; // Listens for user signin States changes
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_in);
-//        userName = (TextView) findViewById(R.id.userNameTV_SignIn);
-        signOutButton = (Button) findViewById(R.id.sign_out_button_SignIn);
-
-
 
         mAuth = FirebaseAuth.getInstance();
+      firebaseUser = mAuth.getCurrentUser();
+        if (firebaseUser!=null)
+        {
+            Intent myIntent = new Intent(SignIn.this, MainActivity.class);
+            SignIn.this.startActivity(myIntent);
+        }
+        else {
 
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.app_id_google)) // Web Client ID - it can be obtained from either the google dev site or the firebase app
-                .requestProfile()
-                .build();
-
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,googleSignInOptions)
-                .build();
+            setContentView(R.layout.sign_in);
+//        userName = (TextView) findViewById(R.id.userNameTV_SignIn);
+            signOutButton = (Button) findViewById(R.id.sign_out_button_SignIn);
 
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
+       //     mAuth = FirebaseAuth.getInstance();
+
+            GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.app_id_google)) // Web Client ID - it can be obtained from either the google dev site or the firebase app
+                    .requestProfile()
+                    .build();
+
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .enableAutoManage(this,this)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API,googleSignInOptions)
+                    .build();
+
+
+            mAuthListener = new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    if (user != null) {
+                        // User is signed in
+                        Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 //                    userName.setText(user.getDisplayName());
-                    Toast.makeText(SignIn.this, "Welcome " + user.getDisplayName() , Toast.LENGTH_SHORT).show();
+                        //   Toast.makeText(SignIn.this, "Welcome " + user.getDisplayName() , Toast.LENGTH_SHORT).show();
                     Intent myIntent = new Intent(SignIn.this, MainActivity.class);
                     SignIn.this.startActivity(myIntent);
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                        finish();
+                    } else {
+                        // User is signed out
+                        Log.d(TAG, "onAuthStateChanged:signed_out");
+                    }
+                    // ...
                 }
-                // ...
-            }
-        };
+            };
 
-        SignInButton signInButton = (SignInButton) findViewById(R.id.signInButton_SignIn);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        signInButton.setScopes(googleSignInOptions.getScopeArray());
+            SignInButton signInButton = (SignInButton) findViewById(R.id.signInButton_SignIn);
+            signInButton.setSize(SignInButton.SIZE_STANDARD);
+            signInButton.setScopes(googleSignInOptions.getScopeArray());
 
-        signInButton.setOnClickListener(this);
-        signOutButton.setOnClickListener(this);
+            signInButton.setOnClickListener(this);
+            signOutButton.setOnClickListener(this);
 
+
+        }
 
     }
 
@@ -126,7 +139,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 GoogleSignInAccount account = result.getSignInAccount();
                     firebaseAuthWithGoogle(account);
             } else {
-                Toast.makeText(SignIn.this, "Sign In Failed with request code :  " + resultCode, Toast.LENGTH_LONG).show();
+                Toast.makeText(SignIn.this, "Sign In Failed" , Toast.LENGTH_LONG).show();
             }
         }
     }

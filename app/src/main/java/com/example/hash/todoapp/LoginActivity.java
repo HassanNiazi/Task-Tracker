@@ -38,6 +38,9 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_login);
         findViewById(R.id.signInButton).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
