@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Task Title"
+        android:fontFamily="casual"
+        android:layout_marginTop="15dp"
+
+        android:id="@+id/title"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/deleteRow"
+        android:layout_toRightOf="@+id/checkboxTaskRow"
+        android:layout_toEndOf="@+id/checkboxTaskRow" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="4dp"
+        android:text="Meet Ahmed at 10 O Clock. Visit Dentist at 11. Compile a database for the New Hosiptals with per day bed charges less then 5000 PKR. "
+        android:id="@+id/Description"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkboxTaskRow"
+        android:layout_above="@+id/Description"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="X"
+        android:layout_marginTop="15dp"
+
+
+        android:id="@+id/deleteRow"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/Description"
+        android:singleLine="false" />
+
+</RelativeLayout>

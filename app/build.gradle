@@ -1,0 +1,50 @@
+import java.util.regex.Pattern
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+
+
+    defaultConfig {
+        applicationId "com.example.hash.todoapp"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:design:24.2.0'
+    compile 'com.android.support:support-v4:24.2.0'
+    // Sign In : Auth
+    compile 'com.google.firebase:firebase-auth:9.4.0'
+    // Database
+    compile 'com.google.firebase:firebase-database:9.4.0'
+    // Core
+    compile 'com.google.firebase:firebase-core:9.4.0'
+    // Google Play Services
+    compile 'com.google.android.gms:play-services-auth:9.4.0'
+    // Crash analytics
+    compile 'com.google.firebase:firebase-crash:9.4.0'
+    // ???? Added by Aliens
+    compile 'com.firebase:firebase-client-android:2.5.2+'
+    compile 'com.firebaseui:firebase-ui-database:0.5.3'
+}
+apply plugin: 'com.google.gms.google-services'

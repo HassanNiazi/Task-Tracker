@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">149807316740-pq5t6vauvmmbcqa9kdvhtslan0222aqt.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://todo-2b5b4.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">149807316740</string>
+    <string name="google_api_key" translatable="false">AIzaSyDba36I6jWu62c1x4BTvQlewOrzpVymPho</string>
+    <string name="google_app_id" translatable="false">1:149807316740:android:05e98ab385fca9cd</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDba36I6jWu62c1x4BTvQlewOrzpVymPho</string>
+    <string name="google_storage_bucket" translatable="false">todo-2b5b4.appspot.com</string>
+</resources>
