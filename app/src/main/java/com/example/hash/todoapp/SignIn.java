@@ -69,8 +69,8 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                     .requestProfile()
                     .build();
 
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .enableAutoManage(this,this)
+            mGoogleApiClient = new GoogleApiClient.Builder(SignIn.this)
+                    .enableAutoManage(SignIn.this,SignIn.this)
                     .addApi(Auth.GOOGLE_SIGN_IN_API,googleSignInOptions)
                     .build();
 
@@ -99,8 +99,8 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
             signInButton.setSize(SignInButton.SIZE_STANDARD);
             signInButton.setScopes(googleSignInOptions.getScopeArray());
 
-            signInButton.setOnClickListener(this);
-            signOutButton.setOnClickListener(this);
+            signInButton.setOnClickListener(SignIn.this);
+            signOutButton.setOnClickListener(SignIn.this);
 
 
         }
@@ -149,7 +149,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
@@ -195,9 +195,6 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 signIn();
                 break;
 
-            case  R.id.signInButton:
-                signIn();
-                break;
 
             case R.id.sign_out_button_SignIn:
 //                FirebaseAuth.getInstance().signOut();

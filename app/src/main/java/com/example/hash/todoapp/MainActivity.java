@@ -125,8 +125,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
-
-
         final DatabaseReference userRef = rootRef.child("users/" + firebaseUser.getUid());
 
         FirebaseRecyclerAdapter<UnitTask,TaskViewHolder> adapter =
@@ -140,15 +138,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         viewHolder.checkBox.setChecked(model.isCompleted());
                     }
                 };
-
-
-
-
-
-
-
-
-
 
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
