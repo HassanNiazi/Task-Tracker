@@ -46,5 +46,6 @@ dependencies {
     // ???? Added by Aliens
     compile 'com.firebase:firebase-client-android:2.5.2+'
     compile 'com.firebaseui:firebase-ui-database:0.5.3'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 apply plugin: 'com.google.gms.google-services'

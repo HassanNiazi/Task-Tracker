@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -42,6 +43,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.squareup.picasso.Picasso;
 //import com.google.firebase.quickstart.database.models.Post;
 //import com.google.firebase.quickstart.database.models.User;
 
@@ -57,6 +59,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ListView listView;
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
+
+    @Override
+    protected void onStart() {
+
+//        FirebaseRecyclerAdapter firebaseRecyclerAdapter = (FirebaseRecyclerAdapter) recyclerView.getAdapter();
+//
+//        firebaseRecyclerAdapter.notifyDataSetChanged();
+
+        super.onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,11 +118,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             TextView userIdNavHeaderTV = (TextView) header.findViewById(R.id.userEmailNavHeader);
             userIdNavHeaderTV.setText(firebaseUser.getEmail());
+//        Drawable drawable = LoadImageFromWebOperations(firebaseUser.getPhotoUrl());
 
-            //        Drawable drawable = LoadImageFromWebOperations(firebaseUser.getPhotoUrl().toString());
+        ImageView userImageNavHeader = (ImageView) header.findViewById(R.id.userImageNavHeader);
+            Uri personPhoto = firebaseUser.getPhotoUrl();
+            if (personPhoto != null) {
+                // Download photo and set to image
+                Context context = userImageNavHeader.getContext();
+                Picasso.with(context).load(personPhoto).into(userImageNavHeader);
+            }
 
-//        ImageView userImageNavHeader = (ImageView) header.findViewById(R.id.userImageNavHeader);
-//        userImageNavHeader.setImageDrawable(drawable);
         }
         catch (Exception e)
         {
@@ -142,6 +159,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         recyclerView.refreshDrawableState();
+
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
     }
     public static Drawable LoadImageFromWebOperations(String url) {
@@ -201,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    public static class TaskViewHolder extends RecyclerView.ViewHolder{
+    class TaskViewHolder extends RecyclerView.ViewHolder{
 
         TextView title,description;
         CheckBox checkBox;
@@ -212,6 +235,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             title = (TextView) v.findViewById(R.id.title);
             description= (TextView) v.findViewById(R.id.Description);
              checkBox = (CheckBox) v.findViewById(R.id.checkboxTaskRow);
+
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MainActivity.this, "Item Clicked " + getLayoutPosition(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
     }
 

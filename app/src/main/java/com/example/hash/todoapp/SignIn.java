@@ -36,7 +36,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "SignInActivity";
     private GoogleApiClient mGoogleApiClient;
-//    TextView userName;
+    //    TextView userName;
     Button signOutButton;
     private FirebaseAuth mAuth;
     private FirebaseUser firebaseUser;
@@ -46,64 +46,58 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.sign_in);
         mAuth = FirebaseAuth.getInstance();
-      firebaseUser = mAuth.getCurrentUser();
-        if (firebaseUser!=null)
-        {
-            Intent myIntent = new Intent(SignIn.this, MainActivity.class);
-            SignIn.this.startActivity(myIntent);
-        }
-        else {
+        firebaseUser = mAuth.getCurrentUser();
+//        if (firebaseUser != null) {
+//            Intent myIntent = new Intent(SignIn.this, MainActivity.class);
+//            SignIn.this.startActivity(myIntent);
+//        } else {
+//        }
 
-            setContentView(R.layout.sign_in);
 //        userName = (TextView) findViewById(R.id.userNameTV_SignIn);
-            signOutButton = (Button) findViewById(R.id.sign_out_button_SignIn);
+        signOutButton = (Button) findViewById(R.id.sign_out_button_SignIn);
 
 
+        //     mAuth = FirebaseAuth.getInstance();
 
-       //     mAuth = FirebaseAuth.getInstance();
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.app_id_google)) // Web Client ID - it can be obtained from either the google dev site or the firebase app
+                .requestProfile()
+                .build();
 
-            GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(getString(R.string.app_id_google)) // Web Client ID - it can be obtained from either the google dev site or the firebase app
-                    .requestProfile()
-                    .build();
-
-            mGoogleApiClient = new GoogleApiClient.Builder(SignIn.this)
-                    .enableAutoManage(SignIn.this,SignIn.this)
-                    .addApi(Auth.GOOGLE_SIGN_IN_API,googleSignInOptions)
-                    .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(SignIn.this)
+                .enableAutoManage(SignIn.this, SignIn.this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
+                .build();
 
 
-            mAuthListener = new FirebaseAuth.AuthStateListener() {
-                @Override
-                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                    if (user != null) {
-                        // User is signed in
-                        Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 //                    userName.setText(user.getDisplayName());
-                        //   Toast.makeText(SignIn.this, "Welcome " + user.getDisplayName() , Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(SignIn.this, "Welcome " + user.getDisplayName() , Toast.LENGTH_SHORT).show();
                     Intent myIntent = new Intent(SignIn.this, MainActivity.class);
                     SignIn.this.startActivity(myIntent);
-                        finish();
-                    } else {
-                        // User is signed out
-                        Log.d(TAG, "onAuthStateChanged:signed_out");
-                    }
-                    // ...
+                    finish();
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-            };
+            }
+        };
 
-            SignInButton signInButton = (SignInButton) findViewById(R.id.signInButton_SignIn);
-            signInButton.setSize(SignInButton.SIZE_STANDARD);
-            signInButton.setScopes(googleSignInOptions.getScopeArray());
+        SignInButton signInButton = (SignInButton) findViewById(R.id.signInButton_SignIn);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        signInButton.setScopes(googleSignInOptions.getScopeArray());
 
-            signInButton.setOnClickListener(SignIn.this);
-            signOutButton.setOnClickListener(SignIn.this);
+        signInButton.setOnClickListener(SignIn.this);
+        signOutButton.setOnClickListener(SignIn.this);
 
-
-        }
 
     }
 
@@ -137,9 +131,9 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-                    firebaseAuthWithGoogle(account);
+                firebaseAuthWithGoogle(account);
             } else {
-                Toast.makeText(SignIn.this, "Sign In Failed" , Toast.LENGTH_LONG).show();
+                Toast.makeText(SignIn.this, "Sign In Failed", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -171,8 +165,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
     }
 
-    public void signOut()
-    {
+    public void signOut() {
 
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
@@ -189,8 +182,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     @Override
     public void onClick(View v) {
 
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.signInButton_SignIn:
                 signIn();
                 break;
