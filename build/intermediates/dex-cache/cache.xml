@@ -1,2 +1,383 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="618485fef3ebe12127f7622abbc9b5b39057b5c2">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-9.4.0_9c9f28a82313354407dcc360761809f290afd7fe.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3b7173b3df4c7029699919414400041f64519e34">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-iid-9.4.0_79c84987dd8cc3c14ca49e02901e0084d4882bac.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/opt/android-sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-alpha8/constraint-layout-solver-1.0.0-alpha8.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="80c371a4fd5e1b77f0e3a25b171356878543ffdd">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.0-alpha8_913bdaa829efe264ef64353e487eef0ad4c89a34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="a440fb3fec30ff925e9f601cc458fb6671834cb2">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-impl-9.4.0_6d3f92dbc68ab62defddc62db2dc838551979eb9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0e4d53465cc141bec58f18a894e4c4e80633fa32">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-database-connection-9.4.0_5ee3cfd7153bce84bc7ba53b350f5deb861ad829.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2_10583b2e7d77e485e698f10cfdfdc0fab925aab4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/design/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="23eb0d2998a782213b56168cbf23a0688b9111d9">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-design-24.2.0_ff8e6e7b9c22066ff26dfc95956efe0e4c8a1c30.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-common/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="34762013d39dbe6c656050589c44e8b61b9a2c5d">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-auth-common-9.4.0_7094bcc21d0412b4c57e9a7e96b90aef2875f7a5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3dee4ce5844d39d843d503fb8fe04e51e5bfffac">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-9.4.0_4747fe4028e5a06e7fa932f3261f6bca8753662e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.firebaseui/firebase-ui-database/0.5.3/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d729037ff4a83220d1f706356ff0dbe4b85e0d73">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.firebaseui-firebase-ui-database-0.5.3_8d19a86a73ff71a71ade6c8d1fa99a45cff02861.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="60d7b23621d31e6f42f4f76f16af467e57a20cda">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_3c6294d5401e8a8edfc4369b54e10a663a31976b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="18b5697c65c4fe5b7381613b8b8ae9ac52e26fa7">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-common-9.4.0_6c8790c7956b127f10cf45b92ba473a875cbcaed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8a36d229011e75f0caef408e1adf0d3fd4d94e02">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-9.4.0_3686e1a6a74e66611b8551cfec660240801ca68b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="032a4b53def5e2ceedfc2e793b126c0163cfa1dd">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_e98549ff20937412e07834d51c07c9481cbe2ded.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="45f5eda279825ff470e3f51019d374d1ef61e000">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.0_898c1887dd2d45e782694c9ff070be024ebdb2f3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fcc945a86ebcbf527429acb8216ec7dae2c06417">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.0_0ce7aceb6f44eeb018d8d0bf3387b56d41a449e0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="58c9f5ee817fdb8b658fd7455fadfb74119f7ee9">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-auth-base-9.4.0_7e88c831d10b55367f64485158d9a1a306b8beda.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="f9b41622897665678d31d78e57a361cb0cebcb0d">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.0_d2af43b17566be1fdd84895b6957325961548a2b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="6e02e34594ebe9c0501ffda8dd48497f81b82977">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_4f8725847db81a03b25c1585a9fc2d919bb4b1a0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2_722588954b52707523da177a9f2d87b6067728c5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.5.2/f19f10d6276aa0b380e2d05d2ab3272d693a5433/firebase-client-android-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="f19f10d6276aa0b380e2d05d2ab3272d693a5433">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/firebase-client-android-2.5.2_96809ab1a6060beb5b9dddb922833845b604c071.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.2/91731b8f5868a3e8a8a773f29b8d06b5c358f5bb/firebase-client-jvm-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="91731b8f5868a3e8a8a773f29b8d06b5c358f5bb">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/firebase-client-jvm-2.5.2_7a54b9cb388c46fb0342810bca523206539ab93d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.0_a56b6911fa46188e59940aaa4b6c152918624dc4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="beac40bcc8a320a896dd15f5109cfcaea5e1e0e3">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.0_5c6eecd3f2017fd9dca56532a2327e829f21330f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/picasso-2.5.2_af25ccd3e322e52c27ce64b9edc34d80ed990ba2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="4348dd26d83b56c2058b768222c3271bce911724">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-auth-9.4.0_1b9b1326602529fd05818f4e9d25580977cb946d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="6eb9107eb34d2fe2b020662b7fbbec991dcba846">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.0_a22937ad59732538b83bf6fc9c1dbd8c8047e70a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c3c638be6e650b165ab9ae144857b64e82787fad">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.0_24d551d875c1265724ed0575a816e8ed57935a66.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/tubesock-0.0.12_f552d2fe1d20bef650e154b105b18aa274154d9e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-crash/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9d48baf96c7e187991a9befa833bebd181960a9">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-crash-9.4.0_735d12d1b3d31dfe63037793d49662c71d0778b4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="4b630471536351be7c3c3100735c75b7ad2cbd84">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-auth-9.4.0_36ddc1c57978003a3a8889b2b271163e67e01679.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c755536e5a100d9c76c8ea0b72f76c018f7a9de2">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-24.2.0_59ac668c5f5c90676e4e63b4cc406d3d5ef624f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2_98a471a504d37a104e69c8d85410b3757b151ccc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-module/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="6bc41d9d6fd12d2ef23c785a259011001f4a1a5b">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-auth-module-9.4.0_9e863112347f8ce0a9ee1babfc0675e8737abdd4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c84e216d9bf618464d6b9564d71d9a656433e7c4">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.0_05837913d8a23ace2ad4cc5a98cfee8a3e11322d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="045be695d968dd707691cc55d23746dbf8cf569a">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_8d634243de348f0de0141322f2f33a84a411c7e9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="84bf369090a8f7e293817efbd6ccf31ada1be32b">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-database-9.4.0_715a2772b1e1b390ca5abaca7615c3a39134650c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="771b3cc0e597b54da25f8086ba73180c59c6bc71">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_c6d8f7bbe94a6da2e633db70f5628492ab434fc6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="88848548ab56d4fbf3d2d1b0c85bf1ff9b4c1f4b">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-9.4.0_4a472c277b49273460c6ee6bd07fdd110f2e3e89.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="f3ee23ef25c9a8fe3d40246d0b7097267963a612">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.0_32c995dd89b0e9f79e0391ba4b479ced36f659b2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/hash/ToDoApp/app/build/intermediates/exploded-aar/com.android.support.constraint/constraint-layout/1.0.0-alpha8/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0e753ea8d0a2dea270da7d96a7d6e9d2e9c10f94">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/com.android.support.constraint-constraint-layout-1.0.0-alpha8_bde7bb13f16948a656e56879bf8b7d9a2ac0b6a0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/opt/android-sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.0/support-annotations-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="6be858a75633b1f0a2d24cad740db57775cb6871">
+        <dex dex="/home/hash/ToDoApp/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.0_c51fff8ae8f0e146b841140673a6f8998d4633ae.jar" />
+    </item>
+
+</items>

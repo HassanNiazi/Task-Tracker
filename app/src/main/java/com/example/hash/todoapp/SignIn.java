@@ -49,18 +49,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         setContentView(R.layout.sign_in);
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
-//        if (firebaseUser != null) {
-//            Intent myIntent = new Intent(SignIn.this, MainActivity.class);
-//            SignIn.this.startActivity(myIntent);
-//        } else {
-//        }
-
-//        userName = (TextView) findViewById(R.id.userNameTV_SignIn);
         signOutButton = (Button) findViewById(R.id.sign_out_button_SignIn);
-
-
-        //     mAuth = FirebaseAuth.getInstance();
-
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.app_id_google)) // Web Client ID - it can be obtained from either the google dev site or the firebase app
                 .requestProfile()
@@ -77,10 +66,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-//                    userName.setText(user.getDisplayName());
-                    //   Toast.makeText(SignIn.this, "Welcome " + user.getDisplayName() , Toast.LENGTH_SHORT).show();
                     Intent myIntent = new Intent(SignIn.this, MainActivity.class);
                     SignIn.this.startActivity(myIntent);
                     finish();
@@ -147,9 +133,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
+
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
                             Toast.makeText(SignIn.this, "Authentication failed.",
@@ -167,16 +151,18 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
     public void signOut() {
 
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(Status status) {
-                        // [START_EXCLUDE]
-                        //     updateUI(false);
-                        // [END_EXCLUDE]
-                    }
-                });
-
+        try {
+            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                    new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(Status status) {
+                        }
+                    });
+        }
+        catch (Exception e)
+        {
+            Log.d(TAG, "signOut: " + e.getMessage());
+        }
     }
 
     @Override
@@ -184,12 +170,12 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
         switch (v.getId()) {
             case R.id.signInButton_SignIn:
+                signOut();
                 signIn();
                 break;
 
 
             case R.id.sign_out_button_SignIn:
-//                FirebaseAuth.getInstance().signOut();
                 signOut();
                 break;
         }

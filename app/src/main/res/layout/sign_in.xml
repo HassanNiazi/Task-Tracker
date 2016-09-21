@@ -11,9 +11,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Note Down"
+        android:text="@string/note_down"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="55dp"
+        android:textSize="55sp"
         android:id="@+id/appTitleLoginPage_SignIn"
         android:fontFamily="cursive"
         android:layout_centerHorizontal="true"
@@ -40,14 +40,11 @@
     <Button
         android:id="@+id/sign_out_button_SignIn"
         android:layout_width="wrap_content"
-        android:layout_marginTop="360dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="@string/sign_out"
+        android:layout_alignBottom="@+id/TextViewFirebaseImage"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-
-
+        android:layout_margin="55dp"
         />
 
 
@@ -55,26 +52,23 @@
     <android.support.v7.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="8dp"
+        android:textSize="14sp"
+        android:id="@+id/TextViewFirebaseImage"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="430dp"
-
-        android:text="    Powered By: "/>
-
-
-
+        android:layout_alignTop="@+id/imageViewFirebase"
+        android:text="@string/powered_by"/>
 
 
     <ImageView
 
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="420dp"
-
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@mipmap/image00"
-
-        />
+        android:id="@+id/imageViewFirebase"
+        android:contentDescription="Firebase"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp" />
 
 
 </RelativeLayout>

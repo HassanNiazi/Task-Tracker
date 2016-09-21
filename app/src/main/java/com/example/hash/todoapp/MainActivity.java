@@ -2,29 +2,24 @@ package com.example.hash.todoapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ButtonBarLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.StrikethroughSpan;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -33,25 +28,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
-import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
+
 //import com.google.firebase.quickstart.database.models.Post;
 //import com.google.firebase.quickstart.database.models.User;
-
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -80,8 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Firebase.setAndroidContext(this);
 
 
-    mAuth = FirebaseAuth.getInstance();
-    firebaseUser = mAuth.getCurrentUser();
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -90,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 mAuth = FirebaseAuth.getInstance();
                 firebaseUser = mAuth.getCurrentUser();
-                NewTaskDialog newTaskDialog =new NewTaskDialog();
-                newTaskDialog.show(getFragmentManager(),"NewTask");
+                NewTaskDialog newTaskDialog = new NewTaskDialog();
+                newTaskDialog.show(getFragmentManager(), "NewTask");
             }
         });
 
@@ -109,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         try {
 
 
-
             View header = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null);
             navigationView.addHeaderView(header);
 
@@ -120,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             userIdNavHeaderTV.setText(firebaseUser.getEmail());
 //        Drawable drawable = LoadImageFromWebOperations(firebaseUser.getPhotoUrl());
 
-        ImageView userImageNavHeader = (ImageView) header.findViewById(R.id.userImageNavHeader);
+            ImageView userImageNavHeader = (ImageView) header.findViewById(R.id.userImageNavHeader);
             Uri personPhoto = firebaseUser.getPhotoUrl();
             if (personPhoto != null) {
                 // Download photo and set to image
@@ -128,33 +115,72 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Picasso.with(context).load(personPhoto).into(userImageNavHeader);
             }
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
             Toast.makeText(MainActivity.this, "Unable to load user data", Toast.LENGTH_SHORT).show();
 
         }
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
 
         final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
         final DatabaseReference userRef = rootRef.child("users/" + firebaseUser.getUid());
 
-        FirebaseRecyclerAdapter<UnitTask,TaskViewHolder> adapter =
-                new FirebaseRecyclerAdapter<UnitTask, TaskViewHolder>(UnitTask.class,R.layout.task,TaskViewHolder.class,userRef) {
+        final FirebaseRecyclerAdapter<UnitTask, TaskViewHolder> adapter =
+                new FirebaseRecyclerAdapter<UnitTask, TaskViewHolder>(UnitTask.class, R.layout.task, TaskViewHolder.class, userRef) {
                     @Override
-                    protected void populateViewHolder(TaskViewHolder viewHolder, UnitTask model, int position) {
+                    protected void populateViewHolder(final TaskViewHolder viewHolder, UnitTask model, int position) {
+
+
+                        final DatabaseReference taskRef = getRef(position);
+
                         mAuth = FirebaseAuth.getInstance();
                         firebaseUser = mAuth.getCurrentUser();
-                        viewHolder.title.setText(model.getTitle());
-                        viewHolder.description.setText(model.getDescription());
+//                        viewHolder.title.setText(model.getTitle());
+//                        viewHolder.description.setText(model.getDescription());
                         viewHolder.checkBox.setChecked(model.isCompleted());
+
+                        if (model.isCompleted()) {
+
+                            SpannableString content = new SpannableString(model.title);
+                            content.setSpan(new StrikethroughSpan(), 0, content.length(), 0);
+                            viewHolder.title.setText(content);
+                            content = new SpannableString(model.description);
+                            content.setSpan(new StrikethroughSpan(), 0, content.length(), 0);
+                            viewHolder.description.setText(content);
+                        } else {
+                            viewHolder.title.setText(model.getTitle());
+                            viewHolder.description.setText(model.getDescription());
+                        }
+                        viewHolder.checkBox.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Map<String, Object> stringBooleanMap = new HashMap<String, Object>();
+                                stringBooleanMap.put("completed", viewHolder.checkBox.isChecked());
+                                userRef.child(taskRef.getKey()).updateChildren(stringBooleanMap);
+
+                            }
+                        });
+                        viewHolder.deleteTaskButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                userRef.child(taskRef.getKey()).removeValue();
+                            }
+                        });
+
+
                     }
+
+
                 };
+
 
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -166,16 +192,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
+        // Code Snippet Added Still Needs to be understood !!! Maybe it
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                int friendlyMessageCount = adapter.getItemCount();
+                int lastVisiblePosition =
+                        linearLayoutManager.findLastCompletelyVisibleItemPosition();
+                // If the recycler view is initially being loaded or the
+                // user is at the bottom of the list, scroll to the bottom
+                // of the list to show the newly added message.
+                if (lastVisiblePosition == -1 ||
+                        (positionStart >= (friendlyMessageCount - 1) &&
+                                lastVisiblePosition == (positionStart - 1))) {
+                    recyclerView.scrollToPosition(positionStart);
+                }
+            }
+        });
+
     }
-    public static Drawable LoadImageFromWebOperations(String url) {
-        try {
-            InputStream is = (InputStream) new URL(url).getContent();
-            Drawable d = Drawable.createFromStream(is, "src name");
-            return d;
-        } catch (Exception e) {
-            return null;
-        }
-    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -195,12 +234,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -224,36 +259,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    class TaskViewHolder extends RecyclerView.ViewHolder{
-
-        TextView title,description;
-        CheckBox checkBox;
-
-
-        public TaskViewHolder(View v) {
-            super(v);
-            title = (TextView) v.findViewById(R.id.title);
-            description= (TextView) v.findViewById(R.id.Description);
-             checkBox = (CheckBox) v.findViewById(R.id.checkboxTaskRow);
-
-            checkBox.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(MainActivity.this, "Item Clicked " + getLayoutPosition(), Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        }
-    }
-
-
     @Override
     public void onClick(View v) {
 
 
-        switch (v.getId())
-        {
-             }
+        switch (v.getId()) {
+
+        }
+
+    }
+
+    public static class TaskViewHolder extends RecyclerView.ViewHolder {
+
+        TextView title, description;
+        CheckBox checkBox;
+        Button deleteTaskButton;
+        public TaskViewHolder(View v) {
+            super(v);
+            title = (TextView) v.findViewById(R.id.title);
+            description = (TextView) v.findViewById(R.id.Description);
+            checkBox = (CheckBox) v.findViewById(R.id.checkboxTaskRow);
+            deleteTaskButton = (Button) v.findViewById(R.id.deleteRow);
+
+        }
 
     }
 

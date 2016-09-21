@@ -49,5 +49,9 @@
     <string name="server_client_id">1:149807316740:android:05e98ab385fca9cd</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="task_tracker">Task Tracker</string>
+    <string name="hassanniazi_hn_com">hassanniazi@hn.com</string>
+    <string name="powered_by">Powered By:</string>
+    <string name="note_down">Note Down</string>
 
 </resources>
