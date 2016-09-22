@@ -16,10 +16,10 @@
         android:layout_height="85dp"
         android:id="@+id/userImageNavHeader"
         android:layout_gravity="center"
-        android:maxHeight="85dp"
-        android:maxWidth="85dp"
+        android:maxHeight="80dp"
+        android:maxWidth="80dp"
 
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:paddingTop="8dp"
         android:src="@android:drawable/star_big_on"
 
         />

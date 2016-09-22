@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="4dp"
-        android:text="Meet Ahmed at 10 O Clock. Visit Dentist at 11. Compile a database for the New Hosiptals with per day bed charges less then 5000 PKR. "
+        android:text="@string/dummyTaskString"
         android:id="@+id/Description"
         android:fontFamily="sans-serif-condensed"
         android:layout_below="@+id/title"
@@ -41,15 +41,14 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="25dp"
         android:alpha="0.4"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:background="@drawable/ic_delete_black_24dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
         android:id="@+id/deleteRow"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+
         android:layout_above="@+id/Description"
-        android:singleLine="false" />
+        android:maxLines="1"
+        android:layout_alignRight="@+id/Description"
+        android:layout_alignEnd="@+id/Description" />
 
 </RelativeLayout>

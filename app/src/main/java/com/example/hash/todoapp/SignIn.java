@@ -36,8 +36,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "SignInActivity";
     private GoogleApiClient mGoogleApiClient;
-    //    TextView userName;
-    Button signOutButton;
+
     private FirebaseAuth mAuth;
     private FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener mAuthListener; // Listens for user signin States changes
@@ -49,7 +48,6 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         setContentView(R.layout.sign_in);
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
-        signOutButton = (Button) findViewById(R.id.sign_out_button_SignIn);
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.app_id_google)) // Web Client ID - it can be obtained from either the google dev site or the firebase app
                 .requestProfile()
@@ -82,7 +80,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         signInButton.setScopes(googleSignInOptions.getScopeArray());
 
         signInButton.setOnClickListener(SignIn.this);
-        signOutButton.setOnClickListener(SignIn.this);
+
 
 
     }
@@ -175,9 +173,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 break;
 
 
-            case R.id.sign_out_button_SignIn:
-                signOut();
-                break;
+
         }
 
     }

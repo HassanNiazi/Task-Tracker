@@ -54,5 +54,6 @@
     <string name="powered_by">Powered By:</string>
     <string name="note_down">Note Down</string>
     <string name="firebase">Firebase</string>
+    <string name="dummyTaskString">Meet Ahmed at 10 O Clock. Visit Dentist at 11. Compile a database for the New Hosiptals with per day bed charges less then 5000 PKR.</string>
 
 </resources>
