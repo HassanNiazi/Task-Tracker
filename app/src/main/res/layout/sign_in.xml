@@ -31,22 +31,11 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginBottom="50dp"
+        android:layout_alignBottom="@+id/TextViewFirebaseImage"
 
         >
 
     </com.google.android.gms.common.SignInButton>
-
-
-    <Button
-        android:id="@+id/sign_out_button_SignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_out"
-        android:layout_alignBottom="@+id/TextViewFirebaseImage"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="55dp"
-        />
-
 
 
     <android.support.v7.widget.AppCompatTextView
@@ -65,7 +54,7 @@
         android:layout_height="80dp"
         android:src="@mipmap/image00"
         android:id="@+id/imageViewFirebase"
-        android:contentDescription="Firebase"
+        android:contentDescription="@string/firebase"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="22dp" />
