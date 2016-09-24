@@ -16,9 +16,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,7 +52,8 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         firebaseUser = mAuth.getCurrentUser();
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.app_id_google)) // Web Client ID - it can be obtained from either the google dev site or the firebase app
-                .requestProfile()
+                .requestScopes(new Scope(Scopes.PLUS_LOGIN)) // "https://www.googleapis.com/auth/plus.login"
+                .requestScopes(new Scope(Scopes.PLUS_ME)) // "https://www.googleapis.com/auth/plus.me"
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(SignIn.this)
@@ -76,9 +79,8 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         };
 
         SignInButton signInButton = (SignInButton) findViewById(R.id.signInButton_SignIn);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        signInButton.setSize(SignInButton.SIZE_WIDE);
         signInButton.setScopes(googleSignInOptions.getScopeArray());
-
         signInButton.setOnClickListener(SignIn.this);
 
 

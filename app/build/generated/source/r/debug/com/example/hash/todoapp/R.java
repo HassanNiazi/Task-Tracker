@@ -3030,21 +3030,25 @@ containing a value of this type.
         public static final int design_fab_background=0x7f02007a;
         public static final int design_ic_visibility=0x7f02007b;
         public static final int design_snackbar_background=0x7f02007c;
-        public static final int ic_delete_black_24dp=0x7f02007d;
-        public static final int ic_menu_camera=0x7f02007e;
-        public static final int ic_menu_gallery=0x7f02007f;
-        public static final int ic_menu_manage=0x7f020080;
-        public static final int ic_menu_send=0x7f020081;
-        public static final int ic_menu_share=0x7f020082;
-        public static final int ic_menu_slideshow=0x7f020083;
-        public static final int navigation_empty_icon=0x7f020084;
-        public static final int notification_template_icon_bg=0x7f020086;
-        public static final int side_nav_bar=0x7f020085;
+        public static final int ic_add_black_24dp=0x7f02007d;
+        public static final int ic_add_white_24dp=0x7f02007e;
+        public static final int ic_delete_black_24dp=0x7f02007f;
+        public static final int ic_menu_camera=0x7f020080;
+        public static final int ic_menu_gallery=0x7f020081;
+        public static final int ic_menu_manage=0x7f020082;
+        public static final int ic_menu_send=0x7f020083;
+        public static final int ic_menu_share=0x7f020084;
+        public static final int ic_menu_slideshow=0x7f020085;
+        public static final int navigation_empty_icon=0x7f020086;
+        public static final int notification_template_icon_bg=0x7f02008a;
+        public static final int se5ti78=0x7f020087;
+        public static final int side_nav_bar=0x7f020088;
+        public static final int signnbackground=0x7f020089;
     }
     public static final class id {
         public static final int DescEditText=0x7f0c008a;
         public static final int Description=0x7f0c009e;
-        public static final int TextViewFirebaseImage=0x7f0c009a;
+        public static final int TextViewFirebaseImage=0x7f0c0099;
         public static final int TitleEditText=0x7f0c0089;
         public static final int action0=0x7f0c008b;
         public static final int action_bar=0x7f0c0067;
@@ -3117,7 +3121,7 @@ containing a value of this type.
         public static final int icon_only=0x7f0c003f;
         public static final int ifRoom=0x7f0c003c;
         public static final int image=0x7f0c004b;
-        public static final int imageViewFirebase=0x7f0c009b;
+        public static final int imageViewFirebase=0x7f0c009a;
         public static final int info=0x7f0c0096;
         public static final int item_touch_helper_previous_elevation=0x7f0c0006;
         public static final int left=0x7f0c0029;
@@ -3165,7 +3169,7 @@ containing a value of this type.
         public static final int showCustom=0x7f0c0012;
         public static final int showHome=0x7f0c0013;
         public static final int showTitle=0x7f0c0014;
-        public static final int signInButton_SignIn=0x7f0c0099;
+        public static final int signInButton_SignIn=0x7f0c009b;
         public static final int snackbar_action=0x7f0c007e;
         public static final int snackbar_text=0x7f0c007d;
         public static final int snap=0x7f0c001a;

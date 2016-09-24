@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="419daec984025bd8baf21211a39adc886df883a7">
+        sha1="53480cb3a275f70e57e70c3a8d956304769f6710">
         <dex dex="/home/hash/ToDoApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_0d8528bd998a00c2669ac6bf9c8850b2f9714326/classes.dex" />
     </item>
     <item
@@ -250,7 +250,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="e5f366e457992d7aa57997645285da8d075408a5">
+        sha1="74fa3109c3332b12d7cc356101dbee230fdbc046">
         <dex dex="/home/hash/ToDoApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d3072fcf652daa75dfbfd9df516d6df7d098314a/classes.dex" />
     </item>
     <item

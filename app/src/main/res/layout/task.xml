@@ -9,8 +9,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Task Title"
-        android:fontFamily="casual"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="6dp"
 
         android:id="@+id/title"
         android:layout_alignParentTop="true"
@@ -24,7 +23,6 @@
         android:layout_margin="4dp"
         android:text="@string/dummyTaskString"
         android:id="@+id/Description"
-        android:fontFamily="sans-serif-condensed"
         android:layout_below="@+id/title"
         android:layout_centerHorizontal="true" />
 
@@ -43,7 +41,6 @@
         android:alpha="0.4"
         android:layout_height="25dp"
         android:background="@drawable/ic_delete_black_24dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/deleteRow"
 
         android:layout_above="@+id/Description"

@@ -3,49 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CDDC39"
+    android:background="@drawable/signnbackground"
+    android:alpha="0.9"
 
     tools:context="com.example.hash.todoapp.SignIn">
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/note_down"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="55sp"
-        android:id="@+id/appTitleLoginPage_SignIn"
-        android:fontFamily="cursive"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"
-        android:layout_centerVertical="false"
-
-        />
-
-
-    <com.google.android.gms.common.SignInButton
-
-        android:id="@+id/signInButton_SignIn"
-        android:layout_marginTop="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_alignBottom="@+id/TextViewFirebaseImage"
-
-        >
-
-    </com.google.android.gms.common.SignInButton>
-
-
-    <android.support.v7.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:id="@+id/TextViewFirebaseImage"
-        android:layout_centerHorizontal="true"
-        android:layout_alignTop="@+id/imageViewFirebase"
-        android:text="@string/powered_by"/>
 
 
     <ImageView
@@ -54,10 +15,35 @@
         android:layout_height="80dp"
         android:src="@mipmap/image00"
         android:id="@+id/imageViewFirebase"
-        android:contentDescription="Firebase"
+        android:contentDescription="@string/firebase"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp" />
+        android:layout_centerHorizontal="true" />
+
+    <com.google.android.gms.common.SignInButton
+
+
+        android:id="@+id/signInButton_SignIn"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="125dp"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="56dp"
+
+        android:layout_above="@+id/imageViewFirebase"
+        android:layout_centerHorizontal="true">
+
+    </com.google.android.gms.common.SignInButton>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/note_down"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="90sp"
+        android:id="@+id/appTitleLoginPage_SignIn"
+        android:fontFamily="cursive"
+        android:layout_marginBottom="157dp"
+        android:layout_above="@+id/signInButton_SignIn"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
